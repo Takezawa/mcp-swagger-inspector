@@ -183,13 +183,10 @@ export function registerTools(server, registry) {
             tags: op.tags,
             operation: op._rawOperation
         };
-        return {
-            content: [
-                { type: "text", text: JSON.stringify(payload, null, 2) },
-                { type: "resource_link", uri: `openapi://${op.specId}/operations/${op.operationId ?? `${op.method}:${op.path}`}`, name: `operation:${op.specId}:${op.operationId ?? `${op.method}:${op.path}`}` },
-                { type: "resource_link", uri: `openapi://${spec.id}/spec`, name: `spec:${spec.id}` }
-            ]
-        };
+        const linksNote = `\n\n[resources]\n` +
+            `- operation: openapi://${op.specId}/operations/${op.operationId ?? `${op.method}:${op.path}`}\n` +
+            `- spec:      openapi://${spec.id}/spec\n`;
+        return { content: [{ type: "text", text: JSON.stringify(payload, null, 2) + linksNote }] };
     });
     // リクエスト例を生成（cURL / fetch）
     server.registerTool("generate_request_example", {
@@ -283,12 +280,9 @@ export function registerTools(server, registry) {
             fetch,
             "```"
         ].join("\n");
-        return {
-            content: [
-                { type: "text", text },
-                { type: "resource_link", uri: `openapi://${op.specId}/operations/${op.operationId ?? `${op.method}:${op.path}`}`, name: `operation:${op.specId}:${op.operationId ?? `${op.method}:${op.path}`}` }
-            ]
-        };
+        const linksNote = `\n\n[resources]\n` +
+            `- operation: openapi://${op.specId}/operations/${op.operationId ?? `${op.method}:${op.path}`}\n`;
+        return { content: [{ type: "text", text: text + linksNote }] };
     });
 }
 //# sourceMappingURL=tools.js.map

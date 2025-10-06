@@ -34,20 +34,14 @@ npm run test:petstore
 
 ## Claud Desktopの設定
 
-事前にビルド
-
-```bash
-npm run build
-```
-
-「設定」→「設定を編集」から設定ファイルを以下のように設定  
-Pathは自分の環境に合わせて変更
+「設定」→「開発者」→「設定を編集」から設定ファイルを以下のように設定  
+commandは環境に合わせて変更
 
 ```json
 {
   "mcpServers": {
     "swagger-inspector": {
-      "command": "npx",
+      "command": "/Users/takezawa/.volta/bin/npx",
       "args": [
         "-y",
         "--package=github:Takezawa/mcp-swagger-inspector#main",
