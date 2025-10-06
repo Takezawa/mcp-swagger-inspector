@@ -46,11 +46,15 @@ Pathは自分の環境に合わせて変更
 ```json
 {
   "mcpServers": {
-    "takezawaapi": {
-      "command": "/Users/takezawa/.volta/bin/node",
-      "args": ["/Users/takezawa/projects/mcp-swagger-inspector/dist/server.js"],
+    "swagger-inspector": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "--package=github:Takezawa/mcp-swagger-inspector#main",
+        "mcp-swagger-inspector"
+      ],
       "env": {
-        "OPENAPI_SOURCES": "/Users/takezawa/projects/mcp-swagger-inspector/openapi-sources.json"
+        "OPENAPI_SOURCES": "[{\"id\":\"petstore\",\"urlOrPath\":\"https://petstore3.swagger.io/api/v3/openapi.json\"}]"
       }
     }
   }

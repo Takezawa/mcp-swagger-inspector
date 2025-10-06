@@ -4,8 +4,8 @@
   "description": "",
   "private": true,
   "main": "index.js",
-  "bin": {
-    "mcp-openapi-server": "dist/server.js"
+   "bin": {
+    "mcp-swagger-inspector": "dist/server.js"
   },
   "scripts": {
     "dev": "tsx src/server.ts",
